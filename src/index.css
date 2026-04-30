@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Syne:wght@400..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Space+Grotesk:wght@300..700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Arial", sans-serif;
+  --font-display: "Plus Jakarta Sans", "Arial", sans-serif;
+  --font-serif: "Instrument Serif", "Georgia", serif;
+  --font-arial: "Arial", sans-serif;
+
+  --color-warm-light: #F9F7F3;
+  --color-deep-space: #1A2A3A;
+  --color-ember-glow: #FF6B4A;
+  --color-luminaria-glow: #7C5CFF;
+  --color-solar-teal: #1ED6A1;
+  --color-golden-hour: #F9C74F;
+  --color-soft-charcoal: #4A5568;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-warm-light text-black font-sans antialiased text-[16px] leading-[1.7] tracking-[-0.01em] selection:bg-luminaria-glow/30;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-black font-semibold tracking-tight leading-tight;
+  }
+
+  h1 { @apply text-4xl md:text-6xl; }
+  h2 { @apply text-3xl md:text-5xl; }
+  h3 { @apply text-2xl md:text-3xl; }
+
+  .btn {
+    @apply px-8 py-4 rounded-[12px] font-display font-bold transition-all duration-300 active:scale-95;
+  }
+
+  .btn-primary {
+    @apply bg-ember-glow text-white hover:bg-ember-glow/90 shadow-[0_10px_30px_rgba(255,107,74,0.35)] hover:shadow-[0_15px_40px_rgba(255,107,74,0.4)];
+  }
+
+  .btn-secondary {
+    @apply bg-transparent border-2 border-luminaria-glow text-luminaria-glow hover:bg-luminaria-glow hover:text-white;
+  }
+}
+
+@layer components {
+  .section-label {
+    @apply inline-block px-4 py-1.5 rounded-full border border-luminaria-glow/20 text-luminaria-glow text-[11px] font-bold tracking-[0.25em] uppercase mb-10;
+  }
+
+  .body-xl { @apply text-[18px] font-normal leading-[1.8] tracking-[-0.015em] text-black/80; }
+  .body-lg { @apply text-[16px] font-normal leading-[1.75] tracking-[-0.01em] text-black/75; }
+}
+
+@layer utilities {
+  .hero-gradient {
+    background: linear-gradient(135deg, #7C5CFF, #1ED6A1);
+  }
+  
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+
+  @keyframes hero-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-18px); }
+  }
+
+  .animate-hero-float {
+    animation: hero-float 6s ease-in-out infinite;
+  }
+
+  .vision-glow-card {
+    background: transparent;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 0 25px rgba(255,255,255,.15), 0 0 60px rgba(124,92,255,.35);
+    @apply relative flex items-center justify-center text-center p-6 rounded-[20px] text-white font-medium border border-white/5;
+  }
+
+  .vision-glow-card::before {
+    content: "";
+    position: absolute;
+    inset: -15px;
+    border-radius: 30px;
+    background: radial-gradient(circle, rgba(255,255,255,0.25), transparent 70%);
+    z-index: -1;
+  }
+}
+
+/* Custom Hero Styles - Cleaned Up */
+.vision-glow-card {
+  background: transparent;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 25px rgba(255,255,255,.15), 0 0 60px rgba(124,92,255,.35);
+  @apply relative flex items-center justify-center text-center p-6 rounded-[20px] text-white font-medium border border-white/5;
+}
+
+.vision-glow-card::before {
+  content: "";
+  position: absolute;
+  inset: -15px;
+  border-radius: 30px;
+  background: radial-gradient(circle, rgba(255,255,255,0.25), transparent 70%);
+  z-index: -1;
+}
